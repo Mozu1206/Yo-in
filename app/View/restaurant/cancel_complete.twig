@@ -1,0 +1,44 @@
+{#レイアウトを継承します#}
+{% extends "layout/layout.twig" %}
+
+{#HTMLのタイトルを定義します。#}
+{% block title %}{{ result.name }}の詳細情報{% endblock %}
+
+{# このページに適用させたいスタイルシートを指定します #}
+{% block header_scripts_add %}
+<style>
+.cancel a{
+  margin:0 auto;
+  display: block;
+  width:79px;
+  font-size: 0.7em;
+}
+  .my a{
+    margin:0 auto;
+    display: block;
+    width:150px;
+    font-size: 0.9em;
+  }
+
+</style>
+{% endblock %}
+
+{#ここから表示したい情報を記載します。#}
+{% block page_content %}
+<div class="box"  style=" margin-top:50px; height:400px">
+  <div class="row">
+    <div class="pt-3 px-0 mt-4" style="margin:0 auto;">
+            <h1 style="text-align:center; font-weight:bold;">キャンセル完了</h1>
+    </div>
+</div>
+
+<div class="row mt-4 my">
+  <div class="col-6 offset-3">
+<a href="/mypage" class="btn btn-warning">マイページ</a>
+  </div>
+</div>
+</div>
+{% endblock %}
+
+{#共通フッタとして追記したい情報を記載します。#}
+{% block footer_scripts_add %}{% endblock %}

@@ -1,0 +1,97 @@
+{#レイアウトを継承します#}
+{% extends "layout/layout.twig" %}
+
+{#HTMLのタイトルを定義します。#}
+{% block title %}{{ result.name }}の詳細情報{% endblock %}
+
+{# このページに適用させたいスタイルシートを指定します #}
+{% block header_scripts_add %}
+
+{% endblock %}
+
+{#ここから表示したい情報を記載します。#}
+{% block page_content %}
+
+    <div class="book-form mt-5">
+        <img src="{{ restaurant.img_url }}" class="card-img-top" alt="...">
+        <div class="card-body p-0 mt-2">
+            <h5 class="card-title mb-1" style="text-align:center; font-weight:bold;">{{ restaurant.name}}</h5>
+            <p class="card-text" style="font-size:1em; text-align:center;">{{ restaurant.detail}}</p>
+        </div>
+
+        <ul class="list-group list-group-flush mt-3">
+            <li class="list-group-item mt-2" style=" padding:6px 20px">{{ restaurant.tel}}</li>
+            <li class="list-group-item" style="padding:6px 20px">{{ restaurant.address}}</li>
+        </ul>
+
+        <div class="card-body ">
+            <form class="" action='/restaurant/detail/' method='post'>
+          <div class="row">
+            <span><h5>人数</h5></span>
+</div>
+<div class="row">
+            <select id="select1a" class="form-control" name="people_num">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9</option>
+              <option>10</option>
+            </select>
+          </div>
+                <input type="hidden" name="restaurant_id" value="{{ restaurant.id }}">
+                <div class="row">
+                  <div class="col-10 offset-1">
+                <button type=“submit” class="btn btn-primary mt-5 mb-2">予約する</button>
+                  </div>
+                </div>
+            </form>
+            {% if error_message %}
+            <div class="alert-warning">
+                {{ error_message }}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <style>
+    .alert-warning{
+      background-color: transparent;
+      color: red;
+      text-align: center;
+    }
+       .book-form{
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #343a4061;
+        border: 2px solid gray;
+        height: 60%;
+        width: 80%;
+        border-radius: 10px;
+      }
+
+      .btn {
+        margin: 0 auto;
+      }
+      .btn-primary {
+        background-color: #ffc107;
+        border: none;
+        text-align: center;
+        display: block;
+        width: 40%;
+      }
+
+      .form-control {
+        width: 100px;
+        float: left
+      }
+    </style>
+
+{% endblock %}
+
+{#共通フッタとして追記したい情報を記載します。#}
+{% block footer_scripts_add %}{% endblock %}
